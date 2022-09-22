@@ -532,88 +532,6 @@ const ApexCharts = () => {
     },
   };
 
-  const polarAreaSeries = [14, 23, 21, 17, 15, 10, 12, 17, 21];
-  const polarAreaOptions = {
-    stroke: {
-      colors: ["#fff"],
-    },
-    fill: {
-      opacity: 0.8,
-    },
-    legend: {
-      show: false,
-    },
-  };
-
-  const generateData = (
-    baseval: number,
-    count: number,
-    yrange: { min: number; max: number }
-  ): number[][] => {
-    var i = 0;
-    var series = [];
-    while (i < count) {
-      var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;
-      var y =
-        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-      var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
-
-      series.push([x, y, z]);
-      baseval += 86400000;
-      i++;
-    }
-    return series;
-  };
-
-  const bubbleOptions = {
-    dataLabels: {
-      enabled: false,
-    },
-    fill: {
-      opacity: 0.8,
-    },
-    xaxis: {
-      tickAmount: 12,
-      type: "category" as const,
-    },
-    yaxis: {
-      max: 70,
-    },
-  };
-
-  const bubbleSeries = [
-    {
-      name: "Bubble1",
-      data: generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
-        min: 10,
-        max: 60,
-      }),
-    },
-    {
-      name: "Bubble2",
-      data: generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
-        min: 10,
-        max: 60,
-      }),
-    },
-    {
-      name: "Bubble3",
-      data: generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
-        min: 10,
-        max: 60,
-      }),
-    },
-    {
-      name: "Bubble4",
-      data: generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
-        min: 10,
-        max: 60,
-      }),
-    },
-  ];
-
-  console.log(bubbleSeries);
-
   const generateHeatmapData = (
     count: number,
     yrange: { min: number; max: number }
@@ -708,10 +626,9 @@ const ApexCharts = () => {
 
   return (
     <main className="bg-gray-100 p-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-
-<div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded shadow">
-          <p>Bar Chart</p>
+          <p>SparkLine Line Chart</p>
           <div className="mt-2">
             <Chart
               options={{
@@ -726,7 +643,7 @@ const ApexCharts = () => {
         </div>
 
         <div className="bg-white p-4 rounded shadow">
-          <p>Bar Chart</p>
+          <p>SparkLine Bar Chart</p>
           <div className="mt-2">
             <Chart
               options={{
@@ -743,7 +660,7 @@ const ApexCharts = () => {
 
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded shadow">
-          <p>Bar Chart</p>
+          <p>SparkLine Area Chart</p>
           <div className="mt-2">
             <Chart
               options={{
@@ -758,7 +675,7 @@ const ApexCharts = () => {
         </div>
 
         <div className="bg-white p-4 rounded shadow">
-          <p>Bar Chart</p>
+          <p>SparkLine Pie Chart</p>
           <div className="mt-2">
             <Chart
               options={{
@@ -770,29 +687,6 @@ const ApexCharts = () => {
               height={120}
             />
           </div>
-        </div>
-      </div>
-      <div className="bg-white p-4 rounded shadow">
-        <p>Line Chart</p>
-        <div className="mt-2">
-          <Chart
-            options={lineOptions}
-            series={lineSeries}
-            type="line"
-            height={320}
-          />
-        </div>
-      </div>
-
-      <div className="bg-white p-4 rounded shadow">
-        <p>Area Chart</p>
-        <div className="mt-2">
-          <Chart
-            options={areaOptions}
-            series={areaSeries}
-            type="area"
-            height={320}
-          />
         </div>
       </div>
 
@@ -809,19 +703,7 @@ const ApexCharts = () => {
       </div>
 
       <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
-        <div className="mt-2">
-          <Chart
-            options={barOptions}
-            series={barSeries}
-            type="bar"
-            height={320}
-          />
-        </div>
-      </div>
-
-      <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
+        <p>Candlestick Chart</p>
         <div className="mt-2">
           <Chart
             options={candlestickOptions}
@@ -833,19 +715,7 @@ const ApexCharts = () => {
       </div>
 
       <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
-        <div className="mt-2">
-          <Chart
-            options={pieOptions}
-            series={pieSeries}
-            type="pie"
-            height={320}
-          />
-        </div>
-      </div>
-
-      <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
+        <p>Radar Chart</p>
         <div className="mt-2">
           <Chart
             options={radarOptions}
@@ -857,31 +727,7 @@ const ApexCharts = () => {
       </div>
 
       <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
-        <div className="mt-2">
-          <Chart
-            options={polarAreaOptions}
-            series={polarAreaSeries}
-            type="polarArea"
-            height={320}
-          />
-        </div>
-      </div>
-
-      <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
-        <div className="mt-2">
-          <Chart
-            options={bubbleOptions}
-            series={bubbleSeries}
-            type="bubble"
-            height={320}
-          />
-        </div>
-      </div>
-
-      <div className="bg-white p-4 rounded shadow">
-        <p>Bar Chart</p>
+        <p>Heatmap Chart</p>
         <div className="mt-2">
           <Chart
             options={heatmapOptions}
@@ -891,7 +737,6 @@ const ApexCharts = () => {
           />
         </div>
       </div>
-
     </main>
   );
 };

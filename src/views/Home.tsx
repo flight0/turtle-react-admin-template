@@ -374,19 +374,30 @@ const Home = () => {
                 .map((v, i) => (
                   <tr key={i}>
                     <td className="text-left whitespace-nowrap text-sm p-4">
-                      Living Room
+                      Leon
                     </td>
                     <td className="text-left whitespace-nowrap text-sm p-4">
-                      15
+                      Front-end Developer
                     </td>
                     <td className="text-left whitespace-nowrap text-sm p-4">
-                      +70%
+                      {i % 2 === 0 ? (
+                        <span className="bg-green-100 text-green-600 px-2 py-0.5 rounded-full">
+                          Active
+                        </span>
+                      ) : (
+                        <span className="bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full">
+                          InActive
+                        </span>
+                      )}
                     </td>
                     <td className="text-left whitespace-nowrap text-sm p-4">
-                      Living Room
+                      leon.fu@example.com
                     </td>
                     <td className="text-left whitespace-nowrap text-sm p-4">
-                      Living RoomLiving RoomLiving Room
+                      Owner
+                    </td>
+                    <td className="text-left whitespace-nowrap text-sm p-4">
+                      <span className="text-indigo-600">Edit</span>
                     </td>
                   </tr>
                 ))}

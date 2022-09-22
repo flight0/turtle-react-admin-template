@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { LockClosedIcon } from "@heroicons/react/24/outline";
 
 const SignUp = () => {
@@ -20,21 +19,40 @@ const SignUp = () => {
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Sign in to your account
+              Sign Up an account
             </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Or{" "}
-              <Link
-                to="/"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                start your 14-day free trial
-              </Link>
-            </p>
           </div>
           <form className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm space-y-4">
+            <div>
+                <label htmlFor="first-name" className="text-sm font-medium text-gray-600">
+                  First name
+                </label>
+                <input
+                  id="first-name"
+                  name="firstName"
+                  type="text"
+                  autoComplete="username"
+                  required
+                  className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="First name"
+                />
+              </div>
+              <div>
+                <label htmlFor="last-name" className="text-sm font-medium text-gray-600">
+                  Last name
+                </label>
+                <input
+                  id="last-name"
+                  name="lastNmae"
+                  type="text"
+                  autoComplete="usernmae"
+                  required
+                  className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Last name"
+                />
+              </div>
               <div>
                 <label htmlFor="email-address" className="text-sm font-medium text-gray-600">
                   Email address
@@ -63,31 +81,19 @@ const SignUp = () => {
                   placeholder="Password"
                 />
               </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
+              <div>
+                <label htmlFor="confirm-password" className="text-sm font-medium text-gray-600">
+                  Confirm password
                 </label>
-              </div>
-
-              <div className="text-sm">
-                <Link
-                  to="/"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </Link>
+                <input
+                  id="confirm-password"
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Confirm password"
+                />
               </div>
             </div>
 
@@ -102,7 +108,7 @@ const SignUp = () => {
                     aria-hidden="true"
                   />
                 </span>
-                Sign in
+                Sign Up
               </button>
             </div>
           </form>

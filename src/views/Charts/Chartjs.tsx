@@ -115,7 +115,7 @@ const lineOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display:false
+      display: false,
     },
     title: {
       display: false,
@@ -129,16 +129,20 @@ const lineData = {
     {
       fill: true,
       label: "Dataset 2",
-      data: Array(7).fill(0).map(() => Math.floor(Math.random() * 1000)),
+      data: Array(7)
+        .fill(0)
+        .map(() => Math.floor(Math.random() * 1000)),
       borderColor: "rgb(73, 131, 218)",
       backgroundColor: "rgba(73, 131, 218, 0.5)",
     },
     {
       label: "Dataset 2",
-      data: Array(7).fill(0).map(() => Math.floor(Math.random() * 1000)),
+      data: Array(7)
+        .fill(0)
+        .map(() => Math.floor(Math.random() * 1000)),
       borderColor: "rgb(159, 159, 159)",
       backgroundColor: "rgba(159, 159, 159, 0.5)",
-      borderDash: [10,10]
+      borderDash: [10, 10],
     },
   ],
 };
@@ -148,7 +152,7 @@ const pieOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false
+      display: false,
     },
     title: {
       display: false,
@@ -196,8 +200,8 @@ const radarData = {
     {
       label: "# of Votes",
       data: [10, 28, 4, 12, 32, 12],
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgb(54, 162, 235)',
+      backgroundColor: "rgba(54, 162, 235, 0.2)",
+      borderColor: "rgb(54, 162, 235)",
       borderWidth: 1,
     },
   ],
@@ -208,7 +212,7 @@ const radarOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false
+      display: false,
     },
     title: {
       display: false,
@@ -226,7 +230,7 @@ const bubbleOptions = {
   },
   plugins: {
     legend: {
-      display: false
+      display: false,
     },
     title: {
       display: false,
@@ -281,13 +285,13 @@ const polarOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false
+      display: false,
     },
     title: {
       display: false,
     },
   },
-}
+};
 
 const ChartJs = () => {
   return (
