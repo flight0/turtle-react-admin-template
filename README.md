@@ -1,6 +1,6 @@
-# Turtle-react-admin-template
+# turtle-react-admin-template
 
-Turtle-react-admin-template is a free admin template based React adn Tailwind CSS, other excellent libraries are also introduced, such as React Router,recharts,prettier,formik...
+Free admin template based React adn Tailwind CSS, other excellent libraries are also introduced, such as React Router,recharts,prettier,formik...
 
 ## Quick Start
 
