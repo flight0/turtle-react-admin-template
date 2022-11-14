@@ -26,7 +26,7 @@ const List = (props: Props) => {
   const {nav}= props;
   return (
     <li>
-      <div className={`text-sm text-gray-400 my-2 ml-2`}>{nav.title}</div>
+      <div className="text-sm text-gray-400 my-2 ml-2">{nav.title}</div>
       <ul>
         {nav.items.map(n =>
           <Item navItem={n} key={n.name} />

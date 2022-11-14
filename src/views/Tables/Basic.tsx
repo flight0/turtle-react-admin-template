@@ -133,7 +133,7 @@ const Base = () => {
     setTableData(newTableData);
   };
   return (
-    <main className="bg-gray-100 p-4 min-h-screen">
+    <>
       <div className="bg-white rounded shadow overflow-hidden">
         <div className="flex justify-between items-center p-4">
           <h1>Users</h1>
@@ -258,7 +258,7 @@ const Base = () => {
           </table>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

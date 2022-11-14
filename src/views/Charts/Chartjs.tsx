@@ -295,7 +295,7 @@ const polarOptions = {
 
 const ChartJs = () => {
   return (
-    <main className="bg-gray-100 p-4 min-h-screen grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <div className="bg-white p-4 rounded shadow">
         <p>Bar Chart</p>
         <div className="mt-2">
@@ -337,7 +337,7 @@ const ChartJs = () => {
           <PolarArea data={polarData} options={polarOptions} className="h-80" />
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

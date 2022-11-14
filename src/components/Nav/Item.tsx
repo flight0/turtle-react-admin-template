@@ -57,7 +57,7 @@ const Item = ({
         >
           <div className="flex items-center">
             {navItem.icon}
-            <span className={`ml-2 text-sm text-white`}>{navItem.name}</span>
+            <span className="ml-2 text-sm text-white">{navItem.name}</span>
           </div>
           <ChevronRightIcon
             className={`h-4 w-4 stroke-white ${
@@ -91,7 +91,7 @@ const Item = ({
         >
           <div className="flex items-center">
             {navItem.icon}
-            <span className={`ml-2 text-sm text-white`}>{navItem.name}</span>
+            <span className="ml-2 text-sm text-white">{navItem.name}</span>
           </div>
         </NavLink>
       </li>

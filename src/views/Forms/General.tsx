@@ -2,7 +2,7 @@ import React from "react";
 
 const FormGeneral = () => {
   return (
-    <main className="bg-gray-100 p-4">
+    <>
       <form action="#" method="POST" onSubmit={(e) => e.preventDefault()}>
         <div className="shadow rounded overflow-hidden">
           <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
@@ -422,7 +422,7 @@ const FormGeneral = () => {
           </div>
         </div>
       </form>
-    </main>
+    </>
   );
 };
 

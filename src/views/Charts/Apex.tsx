@@ -625,7 +625,7 @@ const ApexCharts = () => {
   ];
 
   return (
-    <main className="bg-gray-100 p-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded shadow">
           <p>SparkLine Line Chart</p>
@@ -737,7 +737,7 @@ const ApexCharts = () => {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

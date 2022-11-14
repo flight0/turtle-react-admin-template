@@ -40,7 +40,7 @@ const Heroicon = () => {
   ];
 
   return (
-    <main className="bg-gray-100 p-4 min-h-screen">
+    <>
       <div className="text-sm">
         <p>Heroicons</p>
         <p>By the makers of tailwindcss</p>
@@ -63,7 +63,7 @@ const Heroicon = () => {
           <ArrowRightIcon className="w-5 h-5 ml-2" />
         </a>
       </div>
-    </main>
+    </>
   );
 };
 

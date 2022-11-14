@@ -46,9 +46,9 @@ const Home = () => {
   }, [location]);
 
   return (
-    <div className="flex">
+    <div className="bg-gray-100 flex min-h-screen w-full lg:h-auto">
       <aside
-        className={`z-20 fixed top-0 left-0 bg-indigo-600 w-[250px] min-h-screen -translate-x-full transition-all duration-500 ease-in-out lg:static lg:translate-x-0 lg:shrink-0 lg:shadow-2xl lg:shadow-indigo6-600`}
+        className="h-full overflow-auto overscroll-none z-20 fixed top-0 left-0 bg-indigo-600 w-[250px] -translate-x-full transition-all duration-500 ease-in-out lg:h-auto lg:static lg:translate-x-0 lg:shrink-0 lg:shadow-2xl lg:shadow-indigo-600"
         ref={asideRef}
       >
         <div className="h-16 flex justify-center items-center shadow-md">
@@ -58,8 +58,8 @@ const Home = () => {
         </div>
         <Nav />
       </aside>
-      <div className="w-full">
-        <header className="h-16 flex justify-between items-center p-4 shadow">
+      <div className="w-full lg:w-auto lg:grow">
+        <header className="bg-white h-16 flex justify-between items-center p-4 shadow">
           <Bars3Icon
             className="h-6 w-6 stroke-indigo-600 lg:cursor-pointer"
             onClick={toggleAside}
@@ -75,9 +75,9 @@ const Home = () => {
           </form>
           <Menu as="div" className="relative mr-3">
             <div className="flex items-center">
-            <Menu.Button>
-              <BellIcon className="w-6 h-6 stroke-slate-400 cursor-pointer"/>
-            </Menu.Button>
+              <Menu.Button>
+                <BellIcon className="w-6 h-6 stroke-slate-400 cursor-pointer" />
+              </Menu.Button>
             </div>
             <Transition
               as={Fragment}
@@ -97,10 +97,12 @@ const Home = () => {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                          <PencilSquareIcon
-                            className={`mr-2 h-5 w-5 ${ !active && 'stroke-indigo-600' }`}
-                            aria-hidden="true"
-                          />
+                        <PencilSquareIcon
+                          className={`mr-2 h-5 w-5 ${
+                            !active && "stroke-indigo-600"
+                          }`}
+                          aria-hidden="true"
+                        />
                         Edit
                       </button>
                     )}
@@ -112,10 +114,12 @@ const Home = () => {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                          <DocumentDuplicateIcon
-                          className={`mr-2 h-5 w-5 ${ !active && 'stroke-indigo-600' }`}
+                        <DocumentDuplicateIcon
+                          className={`mr-2 h-5 w-5 ${
+                            !active && "stroke-indigo-600"
+                          }`}
                           aria-hidden="true"
-                          />
+                        />
                         Duplicate
                       </button>
                     )}
@@ -129,10 +133,12 @@ const Home = () => {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                          <ArchiveBoxIcon
-                          className={`mr-2 h-5 w-5 ${ !active && 'stroke-indigo-600' }`}
-                            aria-hidden="true"
-                          />
+                        <ArchiveBoxIcon
+                          className={`mr-2 h-5 w-5 ${
+                            !active && "stroke-indigo-600"
+                          }`}
+                          aria-hidden="true"
+                        />
                         Archive
                       </button>
                     )}
@@ -144,10 +150,12 @@ const Home = () => {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                          <ArrowTopRightOnSquareIcon
-                          className={`mr-2 h-5 w-5 ${ !active && 'stroke-indigo-600' }`}
-                            aria-hidden="true"
-                          />
+                        <ArrowTopRightOnSquareIcon
+                          className={`mr-2 h-5 w-5 ${
+                            !active && "stroke-indigo-600"
+                          }`}
+                          aria-hidden="true"
+                        />
                         Move
                       </button>
                     )}
@@ -161,10 +169,12 @@ const Home = () => {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                          <TrashIcon
-                          className={`mr-2 h-5 w-5 ${ !active && 'stroke-indigo-600' }`}
-                            aria-hidden="true"
-                          />
+                        <TrashIcon
+                          className={`mr-2 h-5 w-5 ${
+                            !active && "stroke-indigo-600"
+                          }`}
+                          aria-hidden="true"
+                        />
                         Delete
                       </button>
                     )}
@@ -181,7 +191,9 @@ const Home = () => {
             />
           </div>
         </header>
-        <Outlet />
+        <main className="p-4">
+          <Outlet />
+        </main>
       </div>
       <div
         className={`bg-black h-screen w-screen fixed top-0 left-0 z-10 opacity-0 invisible transition-all duration-500 lg:hidden`}
