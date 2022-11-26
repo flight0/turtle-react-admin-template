@@ -1,13 +1,10 @@
 import {
-  ArrowRightOnRectangleIcon,
   ChartPieIcon,
-  ExclamationTriangleIcon,
   HomeIcon,
   PencilSquareIcon,
   TableCellsIcon,
-  UserPlusIcon,
-  ExclamationCircleIcon,
-  HeartIcon
+  HeartIcon,
+  DocumentIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
 import List from "./List";
@@ -62,7 +59,7 @@ const Nav = () => {
             {
               name: "Chart.js",
               path: "charts/chartjs",
-            }
+            },
           ],
         },
         {
@@ -85,24 +82,26 @@ const Nav = () => {
       title: "PAGES",
       items: [
         {
-          name: "Sign In",
-          path: "sign-in",
-          icon: <ArrowRightOnRectangleIcon className="h-5 w-5 stroke-white" />,
-        },
-        {
-          name: "Sing Up",
-          path: "sign-up",
-          icon: <UserPlusIcon className="h-5 w-5 stroke-white" />,
-        },
-        {
-          name: "404 Error",
-          path: "404",
-          icon: <ExclamationCircleIcon className="h-5 w-5 stroke-white" />,
-        },
-        {
-          name: "500 Error",
-          path: "500",
-          icon: <ExclamationTriangleIcon className="h-5 w-5 stroke-white" />,
+          name: "Pages",
+          icon: <DocumentIcon className="h-5 w-5 stroke-white" />,
+          child: [
+            {
+              name: "Sign In",
+              path: "sign-in",
+            },
+            {
+              name: "Sing Up",
+              path: "sign-up",
+            },
+            {
+              name: "404 Error",
+              path: "404",
+            },
+            {
+              name: "500 Error",
+              path: "500",
+            },
+          ],
         },
       ],
     },

@@ -8,13 +8,17 @@ import {
   DocumentDuplicateIcon,
   PencilSquareIcon,
   ArchiveBoxIcon,
+  ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import { Menu, Transition } from "@headlessui/react";
+import { useAuth } from "../contexts/auth";
 
 const Home = () => {
+  const auth = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const asideRef = useRef<HTMLElement>(null);
   const asideMask = useRef<HTMLDivElement>(null);
 
@@ -183,11 +187,21 @@ const Home = () => {
               </Menu.Items>
             </Transition>
           </Menu>
-          <div>
+          <div className="flex items-center">
             <img
               className="w-8 h-8 rounded-full"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
               alt="avatar"
+            />
+            <ArrowRightOnRectangleIcon
+              className="ml-2 h-6 w-6 stroke-gray-400 cursor-pointer"
+              onClick={() => {
+                auth.signout(() => {
+                  navigate("/sign-in", { replace: true });
+                  window.localStorage.removeItem("user");
+                  window.sessionStorage.removeItem("user");
+                });
+              }}
             />
           </div>
         </header>

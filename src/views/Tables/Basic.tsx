@@ -1,5 +1,5 @@
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 interface TableCell {
   id: number;
@@ -12,103 +12,98 @@ interface TableCell {
 }
 
 const Base = () => {
-  const [tableData, setTableData] = useState<TableCell[]>([]);
-
-  useEffect(() => {
-    const tableData = [
-      {
-        id: 1,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 1,
-      },
-      {
-        id: 2,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 0,
-      },
-      {
-        id: 3,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 1,
-      },
-      {
-        id: 4,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 0,
-      },
-      {
-        id: 5,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 1,
-      },
-      {
-        id: 6,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 1,
-      },
-      {
-        id: 7,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 1,
-      },
-      {
-        id: 8,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 0,
-      },
-      {
-        id: 9,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 0,
-      },
-      {
-        id: 10,
-        checked: false,
-        name: "Leon",
-        title: "Full Stack",
-        email: "leon@example.com",
-        role: "member",
-        status: 0,
-      },
-    ];
-    setTableData(tableData);
-  }, []);
+  const [tableData, setTableData] = useState<TableCell[]>([
+    {
+      id: 1,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 1,
+    },
+    {
+      id: 2,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 0,
+    },
+    {
+      id: 3,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 1,
+    },
+    {
+      id: 4,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 0,
+    },
+    {
+      id: 5,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 1,
+    },
+    {
+      id: 6,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 1,
+    },
+    {
+      id: 7,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 1,
+    },
+    {
+      id: 8,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 0,
+    },
+    {
+      id: 9,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 0,
+    },
+    {
+      id: 10,
+      checked: false,
+      name: "Leon",
+      title: "Full Stack",
+      email: "leon@example.com",
+      role: "member",
+      status: 0,
+    },
+  ]);
 
   const toggleAllCheck = (e: React.MouseEvent<HTMLInputElement>) => {
     console.log((e.target as HTMLInputElement).checked);
@@ -175,9 +170,8 @@ const Base = () => {
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">{v.role}</td>
                   <td className="h-[44px] flex items-center gap-1">
-                    <PencilIcon className="w-4 h-4 cursor-pointer" />
+                    <PencilSquareIcon className="w-4 h-4 cursor-pointer" />
                     <TrashIcon className="w-4 h-4 cursor-pointer" />
-                    {/* <span className="text-indigo-600 text-sm">Edit</span> */}
                   </td>
                 </tr>
               ))}
@@ -214,7 +208,10 @@ const Base = () => {
             </thead>
             <tbody>
               {tableData.map((v, i) => (
-                <tr className="odd:bg-white even:bg-slate-50  text-sm text-slate-900" key={i}>
+                <tr
+                  className="odd:bg-white even:bg-slate-50  text-sm text-slate-900"
+                  key={i}
+                >
                   <td className="px-4 py-3 whitespace-nowrap">
                     <input
                       type="checkbox"
@@ -224,15 +221,9 @@ const Base = () => {
                       data-id={v.id}
                     />
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    {v.name}
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    {v.title}
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    {v.email}
-                  </td>
+                  <td className="px-4 py-3 whitespace-nowrap">{v.name}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{v.title}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{v.email}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-xs font-medium">
                     {v.status === 1 ? (
                       <span className="bg-green-100 text-green-600 px-2 py-0.5 rounded-full">
@@ -244,13 +235,10 @@ const Base = () => {
                       </span>
                     )}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    {v.role}
-                  </td>
+                  <td className="px-4 py-3 whitespace-nowrap">{v.role}</td>
                   <td className="h-[44px] flex items-center gap-1">
-                    <PencilIcon className="w-4 h-4 cursor-pointer" />
+                    <PencilSquareIcon className="w-4 h-4 cursor-pointer" />
                     <TrashIcon className="w-4 h-4 cursor-pointer" />
-                    {/* <span className="text-indigo-600 text-sm">Edit</span> */}
                   </td>
                 </tr>
               ))}

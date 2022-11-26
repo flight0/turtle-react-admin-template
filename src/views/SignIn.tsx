@@ -1,8 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { LockClosedIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/auth";
+import { useFormik } from "formik";
+
+interface SignInFormValues {
+  username: string;
+  password: string;
+  remember: boolean;
+}
 
 const SignIn = () => {
+  const initialValues: SignInFormValues = {
+    username: "",
+    password: "",
+    remember: true,
+  };
+  const navigate = useNavigate();
+  const auth = useAuth();
+  const formik = useFormik({
+    initialValues,
+    onSubmit: (values: SignInFormValues) => {
+      try {
+        const { username, remember } = values;
+        auth.signin(username, () => {
+          navigate("/", { replace: true });
+          if (remember) {
+            window.localStorage.setItem("user", username);
+          } else {
+            window.sessionStorage.setItem("user", username);
+          }
+        });
+      } catch (error: any) {}
+    },
+  });
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-screen m-4 lg:m-0">
       <div
@@ -32,25 +65,37 @@ const SignIn = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            className="mt-8 space-y-6"
+            method="POST"
+            onSubmit={formik.handleSubmit}
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm space-y-4">
               <div>
-                <label htmlFor="email-address" className="text-sm font-medium text-gray-600">
-                  Email address
+                <label
+                  htmlFor="username"
+                  className="text-sm font-medium text-gray-600"
+                >
+                  Username
                 </label>
                 <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="username"
+                  name="username"
+                  type="username"
+                  autoComplete="username"
                   required
                   className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  placeholder="admin|guest"
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
                 />
               </div>
               <div>
-                <label htmlFor="password" className="text-sm font-medium text-gray-600">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-medium text-gray-600"
+                >
                   Password
                 </label>
                 <input
@@ -60,7 +105,9 @@ const SignIn = () => {
                   autoComplete="current-password"
                   required
                   className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  placeholder="123456"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
                 />
               </div>
             </div>
@@ -68,10 +115,12 @@ const SignIn = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
-                  id="remember-me"
-                  name="remember-me"
+                  id="remember"
+                  name="remember"
                   type="checkbox"
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  onChange={formik.handleChange}
+                  defaultChecked={formik.values.remember}
                 />
                 <label
                   htmlFor="remember-me"
