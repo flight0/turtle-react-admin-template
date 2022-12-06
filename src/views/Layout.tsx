@@ -8,11 +8,12 @@ import {
   DocumentDuplicateIcon,
   PencilSquareIcon,
   ArchiveBoxIcon,
-  ArrowRightOnRectangleIcon,
+  ChatBubbleLeftIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
-import { Menu, Transition } from "@headlessui/react";
+import { Menu, Popover, Transition } from "@headlessui/react";
 import { useAuth } from "../contexts/auth";
 
 const Home = () => {
@@ -42,7 +43,6 @@ const Home = () => {
     const asideClassList = asideRef.current?.classList;
     const asideMaskClassList = asideMask.current?.classList;
     if (asideMaskClassList?.contains("visible")) {
-      console.log(1);
       asideMaskClassList?.add("invisible", "opacity-0");
       asideMaskClassList?.remove("visible", "opacity-50");
       asideClassList?.toggle("-translate-x-full");
@@ -77,132 +77,291 @@ const Home = () => {
               placeholder="Search"
             />
           </form>
-          <Menu as="div" className="relative mr-3">
-            <div className="flex items-center">
-              <Menu.Button>
-                <BellIcon className="w-6 h-6 stroke-slate-400 cursor-pointer" />
-              </Menu.Button>
-            </div>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="px-1 py-1 ">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+          <div className="flex gap-4 items-center">
+            <Menu as="div" className="relative">
+              <div>
+                <Menu.Button className="flex items-center gap-2">
+                  <ChatBubbleLeftIcon className="w-5 h-5 stroke-slate-400 cursor-pointer" />
+                </Menu.Button>
+              </div>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <PencilSquareIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Edit
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <DocumentDuplicateIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Duplicate
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <ArchiveBoxIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Archive
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <ArrowTopRightOnSquareIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Move
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <TrashIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Delete
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+            <Menu as="div" className="relative">
+              <div>
+                <Menu.Button className="flex items-center gap-2">
+                  <BellIcon className="w-5 h-5 stroke-slate-400 cursor-pointer" />
+                </Menu.Button>
+              </div>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <PencilSquareIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Edit
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <DocumentDuplicateIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Duplicate
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <ArchiveBoxIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Archive
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <ArrowTopRightOnSquareIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Move
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? "bg-violet-500 text-white"
+                              : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          <TrashIcon
+                            className={`mr-2 h-5 w-5 ${
+                              !active && "stroke-indigo-600"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          Delete
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+            <Popover className="relative">
+              <Popover.Button className="flex items-center gap-2 outline-none">
+                <img
+                  className="w-8 h-8 rounded-full cursor-pointer"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+                  alt="avatar"
+                />
+                <span className="text-sm text-gray-600">{auth.user}</span>
+                <ChevronDownIcon className="w-4 h-4 stroke-gray-400 stroke-2" />
+              </Popover.Button>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0 translate-y-1"
+                enterTo="opacity-100 translate-y-0"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 translate-y-1"
+              >
+                <Popover.Panel className="absolute right-0 z-10 mt-3 w-[20rem] max-w-sm transform px-4 sm:px-0 lg:max-w-3xl">
+                  <ul>
+                    <li>
+                      
+                    </li>
+                  </ul>
+                  <div className="overflow-hidden rounded-lg shadow-lg bg-white">
+                    <div className="p-4 cursor-pointer">
+                      <p
+                        className="p-2 text-center rounded-md bg-red-400 text-white"
+                        onClick={() => {
+                          auth.signout(() => {
+                            navigate("/sign-in", { replace: true });
+                            window.localStorage.removeItem("user");
+                            window.sessionStorage.removeItem("user");
+                          });
+                        }}
                       >
-                        <PencilSquareIcon
-                          className={`mr-2 h-5 w-5 ${
-                            !active && "stroke-indigo-600"
-                          }`}
-                          aria-hidden="true"
-                        />
-                        Edit
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                      >
-                        <DocumentDuplicateIcon
-                          className={`mr-2 h-5 w-5 ${
-                            !active && "stroke-indigo-600"
-                          }`}
-                          aria-hidden="true"
-                        />
-                        Duplicate
-                      </button>
-                    )}
-                  </Menu.Item>
-                </div>
-                <div className="px-1 py-1 ">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                      >
-                        <ArchiveBoxIcon
-                          className={`mr-2 h-5 w-5 ${
-                            !active && "stroke-indigo-600"
-                          }`}
-                          aria-hidden="true"
-                        />
-                        Archive
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                      >
-                        <ArrowTopRightOnSquareIcon
-                          className={`mr-2 h-5 w-5 ${
-                            !active && "stroke-indigo-600"
-                          }`}
-                          aria-hidden="true"
-                        />
-                        Move
-                      </button>
-                    )}
-                  </Menu.Item>
-                </div>
-                <div className="px-1 py-1 ">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                      >
-                        <TrashIcon
-                          className={`mr-2 h-5 w-5 ${
-                            !active && "stroke-indigo-600"
-                          }`}
-                          aria-hidden="true"
-                        />
-                        Delete
-                      </button>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-          <div className="flex items-center">
-            <img
-              className="w-8 h-8 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-              alt="avatar"
-            />
-            <ArrowRightOnRectangleIcon
-              className="ml-2 h-6 w-6 stroke-gray-400 cursor-pointer"
-              onClick={() => {
-                auth.signout(() => {
-                  navigate("/sign-in", { replace: true });
-                  window.localStorage.removeItem("user");
-                  window.sessionStorage.removeItem("user");
-                });
-              }}
-            />
+                        Sign out
+                      </p>
+                    </div>
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </Popover>
           </div>
         </header>
         <main className="p-4">

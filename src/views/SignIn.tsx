@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LockClosedIcon } from "@heroicons/react/24/outline";
+import {
+  LockClosedIcon,
+} from "@heroicons/react/24/outline";
+import {
+  InformationCircleIcon,
+} from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth";
 import { useFormik } from "formik";
@@ -65,6 +70,12 @@ const SignIn = () => {
               </Link>
             </p>
           </div>
+          <div className="text-sm  p-4 bg-indigo-100 rounded-lg flex items-center">
+            <InformationCircleIcon className="w-6 h-6 fill-blue-600" />
+            <span className="text-indigo-600 ml-1">
+              Username: <span className="font-bold">admin</span> or <span className="font-bold">guset</span> / Password: <span className="font-bold">demo123</span>
+            </span>
+          </div>
           <form
             className="mt-8 space-y-6"
             method="POST"
@@ -86,7 +97,7 @@ const SignIn = () => {
                   autoComplete="username"
                   required
                   className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="admin|guest"
+                  placeholder="username"
                   onChange={formik.handleChange}
                   value={formik.values.username}
                 />
@@ -105,7 +116,7 @@ const SignIn = () => {
                   autoComplete="current-password"
                   required
                   className="mt-1 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="123456"
+                  placeholder="password"
                   onChange={formik.handleChange}
                   value={formik.values.password}
                 />
